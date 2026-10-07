@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#2A1A20">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-95 -100 190 190'%3E%3Crect x='-95' y='-100' width='190' height='190' rx='30' fill='%232A1A20'/%3E%3Cpath d='M0,-58 C-40,-60 -74,-30 -72,8 C-70,48 -38,74 0,74 C38,74 70,48 72,8 C74,-30 40,-60 0,-58 M-16,-58 L-21,-82 L-9,-69 L0,-88 L9,-69 L21,-82 L16,-58' fill='none' stroke='%23B08D57' stroke-width='9' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
-<script>(function(){var h=document.documentElement;h.classList.add('js');if(!location.hash)h.classList.add('intro','locked');try{history.scrollRestoration='manual'}catch(e){}addEventListener('error',function(){h.classList.remove('intro','locked')})})();</script>
+<script>(function(){var h=document.documentElement;h.classList.add('js');if(!location.hash)h.classList.add('intro','locked');try{history.scrollRestoration='manual'}catch(e){}window.__introFail=function(){h.classList.remove('intro','locked')};addEventListener('error',window.__introFail)})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Armenian:wdth,wght@87.5..100,300..500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,300;1,400&display=swap">
 <style>
@@ -19,10 +19,10 @@ html[lang=ru],html[lang=en]{--k:1.12;--ff:'Cormorant Garamond','Noto Serif Armen
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scrollbar-gutter:stable}
 button,.opt,.pill{touch-action:manipulation}
-.inv-line,h2,.rsvp-note,.f-cap,.cd-today p{text-wrap:balance}
+.inv-line,h2,.rsvp-note,.f-cap,.cd-today p,.g-l,.notes p{text-wrap:balance}
 html.intro{background:var(--night)}
 html.locked,html.locked body{overflow:hidden}
-body{background:var(--ivory);color:var(--plum);font-family:var(--ff);font-size:calc(17px*var(--k));font-weight:400;line-height:1.75;font-synthesis:none;overflow-x:hidden;overflow-x:clip;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+body{background:var(--ivory);color:var(--plum);font-family:var(--ff);font-size:calc(17px*var(--k));font-weight:400;line-height:1.75;font-synthesis:none;font-variant-numeric:lining-nums;overflow-x:hidden;overflow-x:clip;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
 html[lang=ru] body,html[lang=en] body{font-weight:500;line-height:1.6}
 button,input,textarea{font:inherit;color:inherit}
 a{color:inherit}
@@ -188,8 +188,8 @@ html[lang=ru] .sig,html[lang=en] .sig{font-weight:400}
 .veil span{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border:1px solid var(--gold);border-radius:22px;background:var(--ivory)}
 .veil.off{opacity:0;pointer-events:none}
 .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pill,.veil span,.opt span,.stp{--ls:.12em;font-size:calc(14px*var(--k));font-weight:500;letter-spacing:var(--ls);text-transform:uppercase;line-height:1.3}
-html[lang=hy] .pill,html[lang=hy] .veil span,html[lang=hy] .opt span{--ls:.02em;font-size:16px;text-transform:none}
+.pill,.veil span,.opt span{--ls:.03em;font-size:calc(15px*var(--k));font-weight:500;letter-spacing:var(--ls);line-height:1.3}
+html[lang=hy] .pill,html[lang=hy] .veil span,html[lang=hy] .opt span{--ls:.02em;font-size:16px}
 html[lang=ru] .pill,html[lang=en] .pill,html[lang=ru] .veil span,html[lang=en] .veil span,html[lang=ru] .opt span,html[lang=en] .opt span{font-weight:600}
 .pill{display:flex;align-items:center;justify-content:center;text-align:center;min-height:48px;padding:6px 10px 6px calc(10px + var(--ls));border:1px solid var(--gold);border-radius:24px;color:var(--plum);text-decoration:none;background:transparent;cursor:pointer;transition:background-color .4s var(--sine),color .4s var(--sine)}
 .pill:active{background:rgba(243,201,165,.35)}
@@ -233,11 +233,12 @@ fieldset{border:0;margin-top:10px;display:grid;gap:10px}
 .opt span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:6px 12px 6px calc(12px + var(--ls));border:1px solid var(--gold);border-radius:26px;color:var(--plum);transition:background-color .45s var(--sine),color .45s var(--sine),border-color .45s var(--sine)}
 .opt input:checked+span{background:var(--garnet);border-color:var(--garnet);color:var(--ivory)}
 .opt input:focus-visible+span{outline:2px solid var(--garnet);outline-offset:3px}
-.guests{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0 6px;transition:opacity .6s var(--sine)}
+.guests{display:grid;justify-items:center;gap:10px;margin:12px 0 6px;text-align:center;transition:opacity .6s var(--sine)}
 .guests.off{opacity:.35}
 .g-l{font-size:calc(16px*var(--k));color:var(--gold-deep);line-height:1.3}
 .stepper{display:flex;align-items:center;gap:10px}
-.stp{width:48px;height:48px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--plum);font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:0;line-height:1;cursor:pointer;transition:background-color .4s var(--sine);display:flex;align-items:center;justify-content:center;padding:0}
+.stp{width:48px;height:48px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--plum);cursor:pointer;transition:background-color .4s var(--sine);display:flex;align-items:center;justify-content:center;padding:0}
+.stp svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round}
 .stp:active{background:rgba(243,201,165,.35)}
 .stp:disabled{cursor:default}
 .stepper output{min-width:36px;text-align:center;font-size:28px;line-height:1}
@@ -245,11 +246,15 @@ fieldset{border:0;margin-top:10px;display:grid;gap:10px}
 .send-wrap .pill.pri{min-height:54px;border-radius:27px;margin-top:0}
 .rise{position:absolute;left:50%;top:0;width:6px;height:8px;margin-left:-3px;background:var(--garnet);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;opacity:0;pointer-events:none}
 #tg{margin-top:10px}
-.thanks{min-height:1.6em;margin-top:14px;text-align:center;color:var(--garnet);opacity:0;transition:opacity .6s var(--sine)}
+.notes{display:grid;margin-top:10px;text-align:center;font-size:calc(15px*var(--k));line-height:1.5}
+.notes>p{grid-area:1/1;align-self:center;transition:opacity .6s var(--sine)}
+.wa-hint{color:var(--gold-deep)}
+.thanks{color:var(--garnet);opacity:0}
 .thanks.on{opacity:1}
+.thanks.on+.wa-hint{opacity:0}
 /* footer */
 .foot{position:relative;margin-top:48px}
-.band{position:relative;height:200px;background:linear-gradient(rgba(243,201,165,0),rgba(243,201,165,.35) 22%,rgba(142,42,58,.28) 48%,rgba(58,36,41,.8) 75%,var(--night))}
+.band{position:relative;height:200px;background:linear-gradient(rgba(243,201,165,0),rgba(243,201,165,.55) 18%,#EDBFA5 34%,#D6948A 50%,#9A4A55 68%,#4A2A31 86%,var(--night))}
 .star{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--gold-light);opacity:.2;animation:tw var(--p,6s) var(--sine) var(--d,0s) infinite}
 @keyframes tw{0%,100%{opacity:.2}50%{opacity:.8}}
 .fnight{background:var(--night);color:var(--ivory);text-align:center;padding:10px 22px calc(env(safe-area-inset-bottom) + 40px)}
@@ -267,7 +272,7 @@ html[lang=ru] .f-names,html[lang=en] .f-names{font-weight:400}
 html[lang=ru] .f-cap,html[lang=en] .f-cap{font-style:italic;font-weight:400}
 /* lang */
 .lang{position:absolute;top:calc(env(safe-area-inset-top) + 12px);right:12px;z-index:110;display:flex;background:rgba(251,246,238,.94);border:1px solid rgba(176,141,87,.45);border-radius:22px;overflow:hidden;box-shadow:0 6px 18px -10px rgba(59,42,47,.25);transition:background-color 1.4s var(--sine),border-color 1.4s var(--sine),box-shadow 1.4s var(--sine)}
-html.intro:not(.dawn) .lang{background:rgba(42,26,32,.45);border-color:rgba(217,191,140,.35);box-shadow:none}
+html.intro:not(.dawn) .lang{background:rgba(251,246,238,.06);border-color:rgba(217,191,140,.35);box-shadow:none}
 html.intro:not(.dawn) .lang button{color:var(--gold-light)}
 html.intro:not(.dawn) .lang button[aria-pressed=true]{color:var(--apricot)}
 .lang button{min-width:48px;min-height:44px;padding:0 8px;border:0;background:transparent;font-size:13px;letter-spacing:.06em;color:var(--gold-deep);cursor:pointer;transition:color 1s var(--sine)}
@@ -276,10 +281,12 @@ html.intro:not(.dawn) .lang button[aria-pressed=true]{color:var(--apricot)}
 .lang button[aria-pressed=true]{color:var(--garnet)}
 .lang button:focus-visible{outline-offset:-4px}
 @media (max-height:700px){:root{--sign:128px}.hero{padding-top:calc(env(safe-area-inset-top) + 66px)}}
-@media (max-width:340px){.date{gap:0 12px}}
+@media (max-width:340px){:root{--sign:128px}.date{gap:0 12px}}
+@media (max-height:640px){:root{--sign:96px}.hero .lbl{margin-top:12px}.inv-line{margin:10px 22px 14px}.wk{margin-top:8px}.wk+.wk{margin-bottom:58px}.cue{top:-48px}}
+@media (min-width:641px){.ar{-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}}
 @media (min-width:700px){.ar .ln{stroke-width:.8}}
 @media (min-width:900px){:root{--sign:190px}#areva path,#fruit path,#inner{stroke-width:1.1}}
-@media (prefers-reduced-motion:reduce){.hint-ring::before,.pin,.pom24,.glows canvas,.star,.spin{animation:none!important}.cue{display:none}}
+@media (prefers-reduced-motion:reduce){.hint-ring::before,.pin,.pom24,.glows canvas,.star,.spin{animation:none!important}.cue{display:none}html.js [data-reveal],.val span,.val span.up{transform:none!important}.divider i,.tl::before,.node::after,.draw{transition:none!important}}
 </style>
 </head>
 <body>
@@ -355,7 +362,7 @@ html.intro:not(.dawn) .lang button[aria-pressed=true]{color:var(--apricot)}
  <div class="col">
   <span class="lbl" data-reveal data-i18n="inv_label">ՀՐԱՎԵՐ</span>
   <h2 data-reveal style="--d:.14s" data-i18n="inv_heading">Սիրելի հարազատներ և ընկերներ</h2>
-  <p class="inv-text" data-reveal style="--d:.28s" data-i18n="inv_text">Մեծ ուրախությամբ հրավիրում ենք Ձեզ մեր նշանադրությանը։ Այս երեկոն մեզ համար առանձնահատուկ է, և ուզում ենք այն անցկացնել մեր ամենամտերիմ մարդկանց հետ։ Ձեր ներկայությունն այն ավելի ջերմ կդարձնի։</p>
+  <p class="inv-text" data-reveal style="--d:.28s" data-i18n="inv_text">Մեծ ուրախությամբ հրավիրում ենք Ձեզ մեր նշանադրությանը։ Այս երեկոն մեզ համար առանձնահատուկ է, և ցանկանում ենք այն անցկացնել մեր ամենամտերիմ մարդկանց հետ։ Ձեր ներկայությունն այն ավելի ջերմ կդարձնի։</p>
   <div data-reveal style="--d:.42s"><svg class="av" viewBox="-80 -80 160 160" aria-hidden="true" data-arms></svg>
   <p class="sig"><span data-i18n="name1">Պավել</span> <span class="amp" data-i18n="amp">&amp;</span> <span data-i18n="name2">Գայանե</span></p></div>
  </div>
@@ -408,15 +415,15 @@ html.intro:not(.dawn) .lang button[aria-pressed=true]{color:var(--apricot)}
    <p class="help" id="eName" data-i18n="err_name" aria-live="polite">Խնդրում ենք նշել Ձեր անունը։</p>
    <fieldset id="fAtt"><legend class="vh" data-i18n="f_attend">Ձեր պատասխանը</legend>
     <label class="opt"><input type="radio" name="att" value="yes"><span data-i18n="f_yes">Սիրով կգամ</span></label>
-    <label class="opt"><input type="radio" name="att" value="no"><span data-i18n="f_no">Ցավոք, չեմ կարող</span></label>
+    <label class="opt"><input type="radio" name="att" value="no"><span data-i18n="f_no">Ցավոք, չեմ կարողանա գալ</span></label>
    </fieldset>
    <p class="help" id="eAtt" data-i18n="err_attend" aria-live="polite">Խնդրում ենք ընտրել պատասխանը։</p>
    <div class="guests" id="gRow"><span class="g-l" id="gLbl" data-i18n="f_guests">Քանի՞ հոգի կլինեք (Ձեզ հետ միասին)</span>
-    <div class="stepper"><button type="button" class="stp" id="gMinus" aria-label="Պակասեցնել" data-i18n-attr="aria-label:f_less">−</button><output class="num" id="gN" aria-live="polite" aria-labelledby="gLbl">1</output><button type="button" class="stp" id="gPlus" aria-label="Ավելացնել" data-i18n-attr="aria-label:f_more">+</button></div></div>
+    <div class="stepper"><button type="button" class="stp" id="gMinus" aria-label="Պակասեցնել" data-i18n-attr="aria-label:f_less"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2,8 H14"/></svg></button><output class="num" id="gN" aria-live="polite" aria-labelledby="gLbl">1</output><button type="button" class="stp" id="gPlus" aria-label="Ավելացնել" data-i18n-attr="aria-label:f_more"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2,8 H14 M8,2 V14"/></svg></button></div></div>
    <div class="field"><textarea id="f-msg" name="msg" rows="3" placeholder=" "></textarea><label for="f-msg" data-i18n="f_msg">Ձեր մաղթանքը (ըստ ցանկության)</label></div>
    <div class="send-wrap" id="sendWrap"><button type="submit" class="pill pri" data-i18n="btn_wa">Ուղարկել WhatsApp-ով</button></div>
+   <div class="notes"><p class="thanks" id="thanks" aria-live="polite" data-i18n="thanks">Գրեթե պատրաստ է՝ մնում է ուղարկել հաղորդագրությունը WhatsApp-ում։</p><p class="wa-hint" id="waHint" data-i18n="wa_pick">WhatsApp-ում ընտրեք Պավելին կամ Գայանեին և ուղարկեք հաղորդագրությունը։</p></div>
    <a class="pill" id="tg" target="_blank" rel="noopener" data-i18n="btn_tg">Կիսվել Telegram-ով</a>
-   <p class="thanks" id="thanks" aria-live="polite" data-i18n="thanks">Շնորհակալություն պատասխանի համար։</p>
   </form>
  </div>
 </section>
@@ -465,7 +472,7 @@ today:['Այսօր է մեր նշանադրության օրը։ Սիրով սպ
 after:['Շնորհակալություն, որ այդ կարևոր օրը մեզ հետ էիք։','Спасибо, что были с нами в этот важный день!','Thank you for celebrating with us!'],
 inv_label:['ՀՐԱՎԵՐ','ПРИГЛАШЕНИЕ','INVITATION'],
 inv_heading:['Սիրելի հարազատներ և ընկերներ','Дорогие родные и друзья','Dear family and friends'],
-inv_text:['Մեծ ուրախությամբ հրավիրում ենք Ձեզ մեր նշանադրությանը։ Այս երեկոն մեզ համար առանձնահատուկ է, և ուզում ենք այն անցկացնել մեր ամենամտերիմ մարդկանց հետ։ Ձեր ներկայությունն այն ավելի ջերմ կդարձնի։','С большой радостью приглашаем вас на нашу помолвку. Этот вечер особенный для нас, и мы хотим провести его с самыми близкими людьми. Ваше присутствие сделает его ещё теплее.','With great joy we invite you to our engagement. This evening is special to us, and we want to spend it with the people closest to our hearts. Your presence will make it even warmer.'],
+inv_text:['Մեծ ուրախությամբ հրավիրում ենք Ձեզ մեր նշանադրությանը։ Այս երեկոն մեզ համար առանձնահատուկ է, և ցանկանում ենք այն անցկացնել մեր ամենամտերիմ մարդկանց հետ։ Ձեր ներկայությունն այն ավելի ջերմ կդարձնի։','С большой радостью приглашаем вас на нашу помолвку. Этот вечер особенный для нас, и мы хотим провести его с самыми близкими людьми. Ваше присутствие сделает его ещё теплее.','With great joy we invite you to our engagement. This evening is special to us, and we want to spend it with the people closest to our hearts. Your presence will make it even warmer.'],
 venue_label:['ՎԱՅՐ','МЕСТО','VENUE'],
 venue_name:['«Բաոբաբ» ռեստորան','Ресторан «Баобаб»','Baobab Restaurant'],
 venue_addr:['ք. Երևան, Նոր Նորքի 4-րդ զանգված, Թևոսյան փողոց 5','Ереван, Нор-Норк 4-й массив, ул. Тевосяна, 5','5 Tevosyan St, Nor Nork, Yerevan'],
@@ -486,11 +493,11 @@ p3_s:['Երաժշտություն և պար','Музыка и танцы','Music
 rsvp_label:['ՀԱՍՏԱՏՈՒՄ','ПОДТВЕРЖДЕНИЕ','RSVP'],
 rsvp_heading:['Կմասնակցե՞ք','Вы придёте?','Will you join us?'],
 rsvp_note:['Խնդրում ենք պատասխանել մինչև հոկտեմբերի 9-ը։','Пожалуйста, ответьте до 9 октября.','Kindly reply by 9 October.'],
-f_name:['Անուն, ազգանուն','Имя и фамилия','Your name'],
+f_name:['Անուն, ազգանուն','Имя и фамилия','Your full name'],
 f_attend:['Ձեր պատասխանը','Ваш ответ','Your reply'],
 f_yes:['Սիրով կգամ','С радостью приду','Joyfully accept'],
-f_no:['Ցավոք, չեմ կարող','К сожалению, не смогу','Regretfully decline'],
-f_guests:['Քանի՞ հոգի կլինեք (Ձեզ հետ միասին)','Сколько всего человек (вместе с вами)','How many in your party (including you)'],
+f_no:['Ցավոք, չեմ կարողանա գալ','К сожалению, не смогу','Regretfully decline'],
+f_guests:['Քանի՞ հոգի կլինեք (Ձեզ հետ միասին)','Сколько человек придёт (включая вас)?','How many in your party (including you)'],
 f_less:['Պակասեցնել','Меньше','Fewer'],
 f_more:['Ավելացնել','Больше','More'],
 f_msg:['Ձեր մաղթանքը (ըստ ցանկության)','Ваше пожелание (необязательно)','Your wishes (optional)'],
@@ -498,7 +505,9 @@ err_name:['Խնդրում ենք նշել Ձեր անունը։','Пожалуй
 err_attend:['Խնդրում ենք ընտրել պատասխանը։','Пожалуйста, выберите ответ.','Please choose an answer.'],
 btn_wa:['Ուղարկել WhatsApp-ով','Отправить в WhatsApp','Send via WhatsApp'],
 btn_tg:['Կիսվել Telegram-ով','Поделиться в Telegram','Share on Telegram'],
-thanks:['Շնորհակալություն պատասխանի համար։','Спасибо за ответ!','Thank you for your reply!'],
+thanks:['Գրեթե պատրաստ է՝ մնում է ուղարկել հաղորդագրությունը WhatsApp-ում։','Почти готово — осталось отправить сообщение в WhatsApp.','Almost done — just press Send in WhatsApp.'],
+wa_pick:['WhatsApp-ում ընտրեք Պավելին կամ Գայանեին և ուղարկեք հաղորդագրությունը։','В WhatsApp выберите чат с Павлом или Гаяне и нажмите «Отправить».','In WhatsApp, choose Pavel or Gayane and press Send.'],
+wa_direct:['Պատրաստի հաղորդագրությունը կբացվի WhatsApp-ում, մնում է այն ուղարկել։','Готовое сообщение откроется в WhatsApp — останется нажать «Отправить».','Your message will open in WhatsApp — just press Send.'],
 foot_place:['ք. Երևան · «Բաոբաբ»','Ереван · «Баобаб»','Yerevan · Baobab'],
 foot_caption:['Ինչպես Մասիսն ու Սիսը՝ միշտ կողք կողքի։','Как Масис и Сис — всегда рядом.','Like Masis and Sis, the twin peaks of Ararat — always side by side.'],
 lang_aria:['Լեզու','Язык','Language'],
@@ -559,11 +568,12 @@ $('#ya').href = YANDEX_LINK; $('#go').href = GOOGLE_LINK;
   const g = $('#'+id).getContext('2d'), gr = g.createRadialGradient(64,64,0,64,64,64);
   gr.addColorStop(0,'rgba('+c+','+a+')'); gr.addColorStop(1,'rgba('+c+',0)'); g.fillStyle = gr; g.fillRect(0,0,128,128); });
 { const g = $('#bloom').getContext('2d'), gr = g.createRadialGradient(64,64,0,64,64,64);
-  gr.addColorStop(0,'#F3C9A5'); gr.addColorStop(.35,'#F8E4D0'); gr.addColorStop(.62,'#FBF6EE'); gr.addColorStop(1,'rgba(251,246,238,0)');
+  gr.addColorStop(0,'#FAEEE2'); gr.addColorStop(.42,'#F7DEC8'); gr.addColorStop(.6,'#F3C9A5'); gr.addColorStop(.78,'rgba(226,152,134,.8)'); gr.addColorStop(1,'rgba(170,82,92,0)');
   g.fillStyle = gr; g.fillRect(0,0,128,128); }
 
 /* ---------- i18n ---------- */
 const main = $('#main'), ic = $('#ic');
+$('#waHint').dataset.i18n = String(OWNER_WHATSAPP).replace(/\D/g,'') ? 'wa_direct' : 'wa_pick';
 let introActive = INTRO, tapped = false;
 function unitTxt(i, n) { return lang === 'hy' ? UNITS.hy[i] : lang === 'ru' ? UNITS.ru[i][ruPlural(n)] : UNITS.en[i][n == 1 ? 0 : 1]; }
 function fill() {
@@ -625,12 +635,13 @@ function renderCd(anim) {
 (function tick() { renderCd(true); setTimeout(tick, 1000 - (now() % 1000) + 8); })();
 
 /* ---------- reveals ---------- */
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.15, rootMargin:'0px 0px -8% 0px'});
-  $$('[data-reveal],[data-in]').forEach(e => io.observe(e));
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.15, rootMargin:'0px 0px -8% 0px'}) : null;
+const watchReveals = () => $$('[data-reveal],[data-in]').forEach(e => io ? io.observe(e) : e.classList.add('in'));   // only after the intro: hidden sections must not finish their reveal unseen
+if (!INTRO) watchReveals();
+if (io) {
   const mo = new IntersectionObserver((es, o) => { if (es.some(e => e.isIntersecting)) { o.disconnect(); loadMap(); } }, {rootMargin:'400px'});
   mo.observe($('#map'));
-} else { $$('[data-reveal],[data-in]').forEach(e => e.classList.add('in')); loadMap(); }
+} else loadMap();
 function loadMap() { const f = $('#ifr'); let done = false; const show = () => { if (!done) { done = true; f.classList.add('on'); } };
   f.addEventListener('load', show); f.src = YANDEX_WIDGET; setTimeout(show, 8000); }
 $('#veil').addEventListener('click', () => { const v = $('#veil'); v.classList.add('off'); setTimeout(() => { $('#ifr').style.pointerEvents = 'auto'; v.style.display = 'none'; }, 420); });
@@ -655,7 +666,7 @@ form.addEventListener('submit', e => {
   e.preventDefault(); let first = null;
   if (!nameI.value.trim()) { $('#fName').classList.add('bad'); $('#eName').classList.add('on'); first = nameI; }
   if (!att()) { $('#eAtt').classList.add('on'); if (!first) first = form.querySelector('input[name=att]'); }
-  if (first) { (first === nameI ? nameI : $('#fAtt')).scrollIntoView({behavior:'smooth', block:'center'}); try { first.focus({preventScroll:true}); } catch (x) {} return; }
+  if (first) { (first === nameI ? nameI : $('#fAtt')).scrollIntoView({behavior: RM ? 'auto' : 'smooth', block:'center'}); try { first.focus({preventScroll:true}); } catch (x) {} return; }
   const url = waUrl(buildMsg());
   try { sessionStorage.setItem('nur_sent','1'); } catch (x) {}
   const w = $('#sendWrap');
@@ -673,7 +684,7 @@ let W = innerWidth, VH = innerHeight, DPR = 1, lowEnd = !!(navigator.deviceMemor
 function sizeCv() { W = innerWidth; VH = cv.clientHeight || innerHeight; DPR = lowEnd ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
   cv.width = Math.round(W * DPR); cv.height = Math.round(VH * DPR); N = W >= 900 ? (lowEnd ? 16 : 30) : (lowEnd ? 10 : 18); }
 sizeCv();
-let rzT; addEventListener('resize', () => { if (innerWidth === W) return; clearTimeout(rzT); rzT = setTimeout(sizeCv, 200); });
+let rzT; addEventListener('resize', () => { if (innerWidth === W) return; clearTimeout(rzT); rzT = setTimeout(() => { sizeCv(); if (RM) startLoop(); }, 200); });
 function sprite(w, h, fn) { const c = document.createElement('canvas'); c.width = Math.ceil(w * 3); c.height = Math.ceil(h * 3);
   const g = c.getContext('2d'); g.scale(3, 3); fn(g); c.w = w; c.h = h; return c; }
 const SEEDS = [4,5,6].map(s => { const w = s * .74, pw = w + 2, ph = s + 2;
@@ -724,7 +735,7 @@ function stepParts(t, dt) {
 
 /* ---------- dusk ---------- */
 const dusk = $('#dusk'); let duskP = 0, duskCur = 0, duskSet = -1;
-const onScroll = () => { duskP = scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight); };
+const onScroll = () => { duskP = scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight); if (RM && introDone) dusk.style.opacity = (.35*duskP).toFixed(3); };
 addEventListener('scroll', onScroll, {passive:true});
 
 /* ---------- intro ---------- */
@@ -739,7 +750,7 @@ const HA = [[el('hl'),2.9,1],[el('n1'),3.05,1.2],[el('na'),3.25,1.2],[el('n2'),3
 function prep(p) { const L = p.getTotalLength(); p._L = L; p.style.strokeDasharray = L + ' ' + L; p.style.strokeDashoffset = L + .5; p.style.opacity = 0; }
 function dr(p, v, o) { p.style.strokeDashoffset = ((p._L + .5)*(1 - v)).toFixed(2); p.style.opacity = v > 0 ? (o === undefined ? 1 : o) : 0; }
 const t0 = performance.now();
-let fontsAt = 1e9, cap = null, tapX = 0, tapY = 0, R = 1, stage = 0, introDone = !INTRO;
+let fontsAt = 1e9, cap = null, tapX = 0, tapY = 0, R = 1, langD = 0, stage = 0, introDone = !INTRO;
 Promise.race([document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 1500))])
   .then(() => { fontsAt = (performance.now() - t0) / 1000; });
 if (INTRO && !RM) { [halfL, halfR, crown, seam, inner, ridge, snow, r10].concat(armP).forEach(prep); r10d.style.opacity = 0; }
@@ -775,6 +786,8 @@ function onTap(e) {
   R = Math.hypot(Math.max(tapX, innerWidth - tapX), Math.max(tapY, innerHeight - tapY));
   cap = prePaint(t); cap.ic = parseFloat(getComputedStyle(ic).opacity) || 1;
   ripple.style.transform = 'translate3d(' + (tapX - 120) + 'px,' + (tapY - 120) + 'px,0) scale(.05)';
+  const lr = document.querySelector('.lang').getBoundingClientRect();
+  langD = Math.hypot(Math.max(Math.abs(lr.left - tapX), Math.abs(lr.right - tapX)), Math.max(Math.abs(lr.top - tapY), Math.abs(lr.bottom - tapY)));
   cap.cx = sb.left + sb.width/2; cap.cy = sb.top + sb.height/2 + sb.height*8/180;
   setTimeout(() => { if (introActive) { night.style.display = openB.style.display = 'none'; setSignOff(0); unlock(); } }, 6000);   // safety net if rAF stalls
 }
@@ -782,7 +795,7 @@ openB.addEventListener('pointerup', onTap); openB.addEventListener('click', onTa
 openB.addEventListener('touchmove', e => e.preventDefault(), {passive:false});
 function setHA(T) { HA.forEach(([e, a, d], i) => { const v = segO(T, a, a + d);
   e.style.opacity = v.toFixed(3); e.style.transform = 'translate3d(0,' + (14*(1 - v)).toFixed(2) + 'px,0)' + (i === 2 ? ' scale(' + (.9 + .1*v).toFixed(4) + ')' : ''); }); }
-function unlock() { if (!introActive) return; scrollTo(0,0); H.classList.remove('locked','intro'); introActive = false; requestAnimationFrame(() => scrollTo(0,0)); }
+function unlock() { if (!introActive) return; scrollTo(0,0); H.classList.remove('locked','intro'); introActive = false; watchReveals(); requestAnimationFrame(() => scrollTo(0,0)); }
 function finishLiving() { srot.classList.add('spin'); sunB.classList.add('breath'); cue.classList.add('go'); }
 function openFrame(T, t) {
   if (RM) {
@@ -805,17 +818,19 @@ function openFrame(T, t) {
   dr(halfL, hv, fo); dr(halfR, hv, fo); dr(seam, seg(T, .15, .75), fo);
   const co = seg(T, .5, 1.3); dr(crown, cvv, 1 - co); crownG.setAttribute('transform', 'translate(0,' + (-8*co).toFixed(2) + ')');
   glow.style.opacity = ((cap.g + (.9 - cap.g)*seg(T, .15, .9))*(1 - seg(T, 1.4, 2.4))).toFixed(3);
-  setSignOff(cap.off*(1 - seg(T, 1.5, 3))); if (T >= 1.8) H.classList.add('dawn');
+  setSignOff(cap.off*(1 - seg(T, 1.5, 3)));
   const o = seg(T, .5, 1.8);
   gL.setAttribute('transform', 'translate(' + (-22*o).toFixed(2) + ',0) rotate(' + (-16*o).toFixed(2) + ',0,74)');
   gR.setAttribute('transform', 'translate(' + (22*o).toFixed(2) + ',0) rotate(' + (16*o).toFixed(2) + ',0,74)');
   if (T >= .8 && stage < 1) { stage = 1; burst(cap.cx, cap.cy, t); }
   const s = seg(T, 1.1, 2.6); armP.forEach(p => dr(p, s));
   areva.setAttribute('transform', 'rotate(' + (45*s).toFixed(3) + ') scale(' + (.7 + .3*s).toFixed(4) + ')');
-  if (T >= 1.4) { const bs = seg(T, 1.4, 3.2), sc = .4 + (R/40 - .4)*bs;
+  // bloom: its opaque core (radius .6*64*sc) reaches the far corner ~60% through, so the night only fades under solid apricot (no grey plum-over-ivory)
+  if (T >= 1.4) { const bs = seg(T, 1.4, 3.2), sc = .4 + (R/26 - .4)*bs;
     bloom.style.transform = 'translate3d(' + (tapX - 64) + 'px,' + (tapY - 64) + 'px,0) scale(' + sc.toFixed(4) + ')';
-    bloom.style.opacity = (.95*seg(T, 1.4, 2.4)*(1 - seg(T, 2.6, 3.8))).toFixed(3); }
-  nbg.style.opacity = (1 - seg(T, 1.8, 3.4)).toFixed(3);
+    bloom.style.opacity = (seg(T, 1.4, 1.95)*(1 - seg(T, 3.0, 3.9))).toFixed(3);
+    if (!H.classList.contains('dawn') && (38.4*sc >= langD || T >= 2.8)) H.classList.add('dawn'); }   // pill turns ivory once the bloom is under it
+  nbg.style.opacity = (1 - seg(T, 2.3, 3.4)).toFixed(3);
   dr(inner, seg(T, 2.4, 3.2)); dots.style.opacity = seg(T, 2.4, 3.2).toFixed(3);
   const bv = seg(T, 2.8, 3.4); el('beads').style.opacity = bv.toFixed(3);
   beads.forEach(b => b.setAttribute('transform', 'translate(' + b.dataset.x + ',' + b.dataset.y + ') rotate(' + b.dataset.a + ') scale(' + (.6 + .4*bv).toFixed(4) + ')'));
@@ -842,6 +857,8 @@ function loop(ts) {
   if (frameN === 70 && probe/60 > .024 && !lowEnd) { lowEnd = true; H.classList.add('low'); sizeCv(); }
   if (!introDone) { if (tapped) openFrame(t - openT, t); else prePaint(t); }
   stepParts(t, dt);
+  if (frameN === 1 && window.__introFail) removeEventListener('error', window.__introFail);   // first good frame: init is done
+  if (RM && introDone) { dusk.style.opacity = (.35*duskP).toFixed(3); return; }   // reduced motion: static motes, redraw only on resize/scroll
   duskCur += (.35*duskP - duskCur)*(1 - Math.pow(.94, dt*1000/16.67));
   if (Math.abs(duskCur - duskSet) > .001) { duskSet = duskCur; dusk.style.opacity = duskCur.toFixed(3); }
   looping = true; requestAnimationFrame(loop);
@@ -853,12 +870,13 @@ if (lowEnd) H.classList.add('low');
 /* ---------- start ---------- */
 fill();
 const hashT = !INTRO && location.hash && location.hash !== '#open' ? document.getElementById(location.hash.slice(1)) : null;
-function goTop() { if (hashT) scrollTo(0, hashT.getBoundingClientRect().top + scrollY - 64); else scrollTo(0, 0); }
+let userMoved = false; ['wheel','touchmove','keydown'].forEach(ev => addEventListener(ev, () => { userMoved = true; }, {passive:true, once:true}));
+function goTop() { if (userMoved) return; if (hashT) scrollTo(0, hashT.getBoundingClientRect().top + scrollY - 64); else scrollTo(0, 0); }
 if (!INTRO) finishLiving();
 document.addEventListener('DOMContentLoaded', goTop);
 addEventListener('load', () => { if (!(INTRO && !introActive)) goTop(); onScroll(); });   // unlock() already scrolled to top
-addEventListener('pageshow', e => { let sent = false; try { sent = !!sessionStorage.getItem('nur_sent'); } catch (x) {}
-  if (e.persisted) { if (sent) $('#thanks').classList.add('on'); return; } goTop(); });
+function showSent() { try { if (sessionStorage.getItem('nur_sent')) $('#thanks').classList.add('on'); } catch (x) {} }
+showSent(); addEventListener('pageshow', e => { if (e.persisted) showSent(); });
 goTop(); startLoop();
 
 /* ---------- self-check (console only) ---------- */
