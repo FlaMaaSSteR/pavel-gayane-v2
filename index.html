@@ -10,14 +10,16 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#2A1A20">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-95 -100 190 190'%3E%3Crect x='-95' y='-100' width='190' height='190' rx='30' fill='%232A1A20'/%3E%3Cpath d='M0,-58 C-40,-60 -74,-30 -72,8 C-70,48 -38,74 0,74 C38,74 70,48 72,8 C74,-30 40,-60 0,-58 M-16,-58 L-21,-82 L-9,-69 L0,-88 L9,-69 L21,-82 L16,-58' fill='none' stroke='%23B08D57' stroke-width='9' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
-<script>(function(){var h=document.documentElement;h.classList.add('js');if(!location.hash)h.classList.add('intro','locked');try{history.scrollRestoration='manual'}catch(e){}})();</script>
+<script>(function(){var h=document.documentElement;h.classList.add('js');if(!location.hash)h.classList.add('intro','locked');try{history.scrollRestoration='manual'}catch(e){}addEventListener('error',function(){h.classList.remove('intro','locked')})})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Armenian:wdth,wght@87.5..100,300..500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,300;1,400&display=swap">
 <style>
 :root{--night:#2A1A20;--night-edge:#1E1217;--night-core:#3A2429;--ivory:#FBF6EE;--card:#FFFDF9;--card-warm:#FFF8F1;--apricot:#F3C9A5;--gold:#B08D57;--gold-deep:#8A6634;--gold-light:#D9BF8C;--garnet:#8E2A3A;--garnet-press:#74202F;--plum:#3B2A2F;--mist:#D8CCD6;--sine:cubic-bezier(.37,0,.63,1);--sine-out:cubic-bezier(.61,1,.88,1);--shadow:0 18px 40px -24px rgba(59,42,47,.25);--k:1;--ff:'Noto Serif Armenian',serif;--sign:150px;color-scheme:only light}
 html[lang=ru],html[lang=en]{--k:1.12;--ff:'Cormorant Garamond','Noto Serif Armenian',serif}
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scrollbar-gutter:stable}
+button,.opt,.pill{touch-action:manipulation}
+.inv-line,h2,.rsvp-note,.f-cap,.cd-today p{text-wrap:balance}
 html.intro{background:var(--night)}
 html.locked,html.locked body{overflow:hidden}
 body{background:var(--ivory);color:var(--plum);font-family:var(--ff);font-size:calc(17px*var(--k));font-weight:400;line-height:1.75;font-synthesis:none;overflow-x:hidden;overflow-x:clip;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
@@ -35,7 +37,7 @@ html[lang=ru] h2,html[lang=en] h2{font-weight:500}
 svg{overflow:visible}
 .ln,.sign svg path,.sign svg circle,.draw{fill:none;stroke:var(--gold);stroke-linecap:round;stroke-linejoin:round}
 /* layers */
-.glows{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.glows{position:fixed;top:0;right:0;bottom:0;left:0;overflow:hidden;z-index:0;pointer-events:none}
 .glows canvas{position:absolute;width:90vmax;height:90vmax}
 #g1{left:-30vmax;top:-30vmax;animation:gd1 46s var(--sine) infinite alternate}
 #g2{right:-45vmax;top:20vh;animation:gd2 58s var(--sine) infinite alternate}
@@ -44,11 +46,11 @@ svg{overflow:visible}
 @keyframes gd2{to{transform:translate3d(-5vmax,-4vmax,0)}}
 @keyframes gd3{to{transform:translate3d(4vmax,-5vmax,0)}}
 html.low .glows canvas{animation-play-state:paused}
-#dusk{position:fixed;inset:0;z-index:0;opacity:0;pointer-events:none;background:linear-gradient(180deg,rgba(243,201,165,0) 35%,rgba(236,176,140,.5) 80%,rgba(142,42,58,.28) 100%)}
+#dusk{position:fixed;top:0;right:0;bottom:0;left:0;z-index:0;opacity:0;pointer-events:none;background:linear-gradient(180deg,rgba(243,201,165,0) 35%,rgba(236,176,140,.5) 80%,rgba(142,42,58,.28) 100%)}
 #night{display:none}
 html.js #night{display:block;position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;z-index:1;overflow:hidden;pointer-events:none}
 html:not(.intro) #night,html:not(.intro) #open{display:none}
-.nbg{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 34%,var(--night-core) 0%,var(--night) 55%,var(--night-edge) 100%)}
+.nbg{position:absolute;top:0;right:0;bottom:0;left:0;background:radial-gradient(120% 90% at 50% 34%,var(--night-core) 0%,var(--night) 55%,var(--night-edge) 100%)}
 #bloom{position:absolute;left:0;top:0;width:128px;height:128px;opacity:0;transform-origin:64px 64px}
 #ripple{position:absolute;left:0;top:0;width:240px;height:240px;border:1px solid var(--gold-light);border-radius:50%;opacity:0}
 html.intro .nbg,html.intro #bloom{will-change:opacity,transform}
@@ -56,12 +58,12 @@ html.intro .nbg,html.intro #bloom{will-change:opacity,transform}
 main{position:relative;z-index:3}
 html.intro main>:not(.hero){visibility:hidden}
 #open{display:none}
-html.intro #open{display:block;position:fixed;inset:0;z-index:100;background:transparent;border:0;cursor:pointer;touch-action:none;-webkit-appearance:none;appearance:none}
+html.intro #open{display:block;position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background:transparent;border:0;cursor:pointer;touch-action:none;-webkit-appearance:none;appearance:none}
 #open:focus-visible{outline:2px solid var(--gold-light);outline-offset:-10px}
 /* hero */
 .hero{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;min-height:100vh;min-height:min(100svh,920px);padding:calc(env(safe-area-inset-top) + 56px) 0 0}
-.sign-box{position:relative;width:var(--sign);height:var(--sign);flex:none}
-.sign{position:absolute;inset:0}
+.sign-box{position:relative;width:var(--sign);height:var(--sign);flex:none;margin-top:auto}
+.sign{position:absolute;top:0;right:0;bottom:0;left:0}
 .sign>*{position:absolute}
 .halo{width:220%;height:220%;left:-60%;top:-60%;background:radial-gradient(circle,rgba(217,191,140,.55),rgba(217,191,140,0) 60%);opacity:0;pointer-events:none}
 .sign svg{left:0;top:0;width:100%;height:100%}
@@ -73,18 +75,19 @@ html.intro #open{display:block;position:fixed;inset:0;z-index:100;background:tra
 html.intro #fruit{opacity:1}
 #beads path{fill:var(--garnet);stroke:none}
 #glow{fill:url(#gg);stroke:none}
-.mono{inset:0;display:flex;align-items:center;justify-content:center;gap:.28em;color:var(--garnet);font:300 15px 'Noto Serif Armenian',serif;line-height:1}
+.mono{top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center;gap:.28em;color:var(--garnet);font:300 15px 'Noto Serif Armenian',serif;line-height:1}
 .mono .amp{font-size:13px}
 html.intro #areva path,html.intro #dots,html.intro #inner,html.intro #beads,html.intro .mono{opacity:0}
 .hint-ring{display:none;left:50%;top:50%;width:108%;height:108%;transform:translate(-50%,-48%)}
 html.intro .hint-ring{display:block}
-.hint-ring::before{content:"";position:absolute;inset:0;border:1px solid var(--gold-light);border-radius:50%;opacity:0;animation:hring 2.8s var(--sine-out) infinite}
+.hint-ring::before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;border:1px solid var(--gold-light);border-radius:50%;opacity:0;animation:hring 2.8s var(--sine-out) infinite}
 @keyframes hring{0%{transform:scale(.9);opacity:0}15%{opacity:.5}100%{transform:scale(1.25);opacity:0}}
 .intro-copy{display:none}
 html.intro .intro-copy{display:block;position:absolute;top:calc(100% + 28px);left:50%;width:min(92vw,440px);transform:translateX(-50%);color:var(--gold-light);transition:none}
 .ic-names{font-size:calc(20px*var(--k));font-weight:300;line-height:1.4;opacity:0}
 .ic-names .amp{color:var(--gold-light)}
-.ic-hint{margin-top:14px;font-size:calc(13px*var(--k));font-weight:500;font-stretch:87.5%;letter-spacing:.24em;text-transform:uppercase;opacity:0;padding-left:.24em}
+.ic-hint{margin-top:14px;font-size:calc(14px*var(--k));font-weight:500;letter-spacing:.14em;text-transform:uppercase;opacity:0;padding-left:.14em}
+html[lang=hy] .ic-hint{font-size:16px;text-transform:none;letter-spacing:.04em;padding-left:.04em}
 html.intro .ha{opacity:0;transform:translate3d(0,14px,0)}
 .hero .lbl{margin-top:18px}
 h1{display:flex;flex-direction:column;align-items:center;margin-top:6px;font-weight:300}
@@ -95,15 +98,16 @@ html[lang=ru] .nm,html[lang=en] .nm{font-weight:400;font-stretch:100%}
 .date{display:inline-grid;grid-template-columns:auto 1px auto 1px auto;align-items:center;gap:0 18px}
 .date .num{font-size:30px;line-height:1.2;color:var(--plum)}
 .day{position:relative}
-.date .lbl{margin:0;font-size:calc(12px*var(--k));letter-spacing:.28em;padding-left:.28em}
+.date .lbl{margin:0;font-size:calc(15px*var(--k));font-stretch:100%;letter-spacing:.14em;padding-left:.14em}
 .rule{width:1px;height:36px;background:var(--gold);transform-origin:50% 50%}
 html.intro .rule{transform:scaleY(0)}
 .ring10{position:absolute;left:50%;top:50%;width:70px;height:52px;margin:-27px 0 0 -36px;pointer-events:none}
 .ring10 path{fill:none;stroke:var(--gold);stroke-width:1.1;stroke-linecap:round}
 .ring10 circle{fill:var(--garnet)}
 html.intro .ring10 *{opacity:0}
-.wk{margin:12px 0 64px;font-size:calc(15px*var(--k));color:rgba(59,42,47,.75)}
+.wk{margin:12px 0 0;font-size:calc(15px*var(--k));color:rgba(59,42,47,.75)}
 .ararat{position:relative;margin-top:auto;width:100%;height:150px;flex:none;background:linear-gradient(rgba(243,201,165,0),rgba(243,201,165,.45) 60%,var(--ivory))}
+.wk+.wk{margin:2px 0 64px}
 html.intro .ararat{opacity:0}
 .ararat::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,rgba(176,141,87,0),var(--gold) 20%,var(--gold) 80%,rgba(176,141,87,0));opacity:.6}
 .ar{position:absolute;bottom:1px;left:50%;transform:translateX(-50%);width:min(100%,640px);height:auto;display:block}
@@ -112,9 +116,13 @@ html.intro #sun{opacity:0}
 #sun{opacity:.85}
 .breath{animation:sunb 9s var(--sine) infinite}
 @keyframes sunb{0%,100%{opacity:1}50%{opacity:.7}}
-.cue{position:absolute;left:50%;top:-46px;width:1px;height:30px;background:var(--gold);transform:scaleY(0);transform-origin:top;opacity:0}
-.cue.go{animation:cue 2.8s var(--sine) infinite}
+.cue{position:absolute;left:50%;top:-56px;width:12px;height:46px;margin-left:-6px}
+.cue::before{content:"";position:absolute;left:5.25px;top:0;width:1.5px;height:40px;background:var(--gold);transform:scaleY(0);transform-origin:top;opacity:0}
+.cue::after{content:"";position:absolute;left:2.5px;top:32px;width:7px;height:7px;border:solid var(--gold);border-width:0 1.5px 1.5px 0;transform:rotate(45deg);opacity:0}
+.cue.go::before{animation:cue 2.8s var(--sine) infinite}
+.cue.go::after{animation:cuec 2.8s var(--sine) infinite}
 @keyframes cue{0%{transform:scaleY(0);opacity:0}15%{opacity:.9}55%{transform:scaleY(1);opacity:.9}100%{transform:scaleY(1);opacity:0}}
+@keyframes cuec{0%,35%{opacity:0;transform:translateY(-6px) rotate(45deg)}60%{opacity:.9;transform:translateY(0) rotate(45deg)}100%{opacity:0;transform:translateY(0) rotate(45deg)}}
 /* sections */
 .sec{padding:48px 22px;text-align:center}
 .col{max-width:560px;margin:0 auto}
@@ -137,19 +145,19 @@ html.js .divider.in i{transform:scaleX(1)}
 .cd-grid,.cd-today{grid-area:1/1;transition:opacity .9s var(--sine)}
 .cd-grid{--cw:min(74px,calc((100vw - 74px)/4));display:grid;grid-template-columns:repeat(4,var(--cw));gap:10px;justify-content:center;align-self:center}
 .cell{position:relative;height:calc(var(--cw)*96/74)}
-.cell svg{position:absolute;inset:0;width:100%;height:100%}
+.cell svg{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%}
 .cell path{stroke-width:1}
 .cell .in2{stroke-opacity:.4}
 .val{position:absolute;left:0;right:0;top:52%;transform:translateY(-50%);display:grid;justify-items:center}
 .val span{grid-area:1/1;font-size:34px;line-height:1;color:var(--plum);opacity:0;transform:translate3d(0,6px,0);transition:opacity .65s var(--sine),transform .65s var(--sine)}
 .val span.on{opacity:1;transform:none}
 .val span.up{transform:translate3d(0,-6px,0)}
-.unit{position:absolute;left:-8px;right:-8px;top:79%;display:grid;justify-items:center}
-.unit span{grid-area:1/1;font-size:calc(12px*var(--k));letter-spacing:.04em;color:var(--gold-deep);line-height:1.3;opacity:0;transition:opacity .65s var(--sine);white-space:nowrap}
+.unit{position:absolute;left:6px;right:6px;top:79%;display:grid;justify-items:center}
+.unit span{grid-area:1/1;font-size:calc(clamp(9.5px,3vw,12px)*var(--k));letter-spacing:0;color:var(--gold-deep);line-height:1.3;opacity:0;transition:opacity .65s var(--sine);white-space:nowrap}
 .unit span.on{opacity:1}
 html:not(.js) .cd-wrap{display:none}
 .cd-today{position:relative;width:min(320px,100%);height:130px;opacity:0;pointer-events:none;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 34px 12px}
-.cd-today>svg.arch{position:absolute;inset:0;width:100%;height:100%}
+.cd-today>svg.arch{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%}
 .is-today .cd-grid{opacity:0}
 .is-today .cd-today{opacity:1}
 .pom24{width:24px;height:27px;margin-bottom:6px;animation:pb 4.5s var(--sine) infinite}
@@ -164,7 +172,7 @@ html:not(.js) .cd-wrap{display:none}
 html[lang=ru] .sig,html[lang=en] .sig{font-weight:400}
 /* venue */
 .card{position:relative;margin-top:26px;background:var(--card);border:1px solid rgba(176,141,87,.45);border-radius:180px 180px 22px 22px;padding:64px 20px 24px;box-shadow:var(--shadow)}
-.card::before{content:"";position:absolute;inset:7px;border:1px solid rgba(176,141,87,.3);border-radius:173px 173px 15px 15px;pointer-events:none}
+.card::before{content:"";position:absolute;top:7px;right:7px;bottom:7px;left:7px;border:1px solid rgba(176,141,87,.3);border-radius:173px 173px 15px 15px;pointer-events:none}
 .pom40{display:block;width:40px;height:44px;margin:0 auto 14px}
 .pom40 path{stroke-width:4.4;--dur:1.6s}
 .v-name{font-size:calc(26px*var(--k));line-height:1.3}
@@ -174,15 +182,16 @@ html[lang=ru] .sig,html[lang=en] .sig{font-weight:400}
 .pin{position:absolute;left:50%;top:50%;width:28px;height:28px;margin:-14px 0 0 -14px;animation:pin 2.4s var(--sine) infinite}
 .pin path,.pin circle{fill:none;stroke:var(--gold);stroke-width:1.3}
 @keyframes pin{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.08);opacity:1}}
-.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;pointer-events:none;transition:opacity .8s var(--sine)}
+.map iframe{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;border:0;opacity:0;pointer-events:none;transition:opacity .8s var(--sine)}
 .map iframe.on{opacity:1}
-.veil{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(251,246,238,.5);border:0;cursor:pointer;transition:opacity .4s var(--sine)}
+.veil{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center;background:rgba(251,246,238,.5);border:0;cursor:pointer;transition:opacity .4s var(--sine)}
 .veil span{display:inline-flex;align-items:center;min-height:44px;padding:0 22px;border:1px solid var(--gold);border-radius:22px;background:var(--ivory)}
 .veil.off{opacity:0;pointer-events:none}
 .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pill,.veil span,.opt span,.stp{font-size:calc(12.5px*var(--k));font-weight:500;font-stretch:87.5%;letter-spacing:.24em;text-transform:uppercase;line-height:1.3}
+.pill,.veil span,.opt span,.stp{--ls:.12em;font-size:calc(14px*var(--k));font-weight:500;letter-spacing:var(--ls);text-transform:uppercase;line-height:1.3}
+html[lang=hy] .pill,html[lang=hy] .veil span,html[lang=hy] .opt span{--ls:.02em;font-size:16px;text-transform:none}
 html[lang=ru] .pill,html[lang=en] .pill,html[lang=ru] .veil span,html[lang=en] .veil span,html[lang=ru] .opt span,html[lang=en] .opt span{font-weight:600}
-.pill{display:flex;align-items:center;justify-content:center;text-align:center;min-height:48px;padding:6px 10px 6px calc(10px + .24em);border:1px solid var(--gold);border-radius:24px;color:var(--plum);text-decoration:none;background:transparent;cursor:pointer;transition:background-color .4s var(--sine),color .4s var(--sine)}
+.pill{display:flex;align-items:center;justify-content:center;text-align:center;min-height:48px;padding:6px 10px 6px calc(10px + var(--ls));border:1px solid var(--gold);border-radius:24px;color:var(--plum);text-decoration:none;background:transparent;cursor:pointer;transition:background-color .4s var(--sine),color .4s var(--sine)}
 .pill:active{background:rgba(243,201,165,.35)}
 .pill.pri{width:100%;min-height:52px;border-radius:26px;margin-top:10px;background:var(--garnet);border-color:var(--garnet);color:var(--ivory)}
 .pill.pri:active{background:var(--garnet-press)}
@@ -207,7 +216,7 @@ html:not(.js) .node::after,.tl.in .node::after{transform:scale(1)}
 /* rsvp */
 .rsvp-note{margin-top:8px;font-size:calc(15px*var(--k));color:var(--gold-deep)}
 .rcard{position:relative;margin-top:26px;background:var(--card-warm);border:1px solid rgba(176,141,87,.45);border-radius:22px;padding:28px 22px;text-align:left;box-shadow:var(--shadow)}
-.rcard::before{content:"";position:absolute;inset:7px;border:1px solid rgba(176,141,87,.3);border-radius:15px;pointer-events:none}
+.rcard::before{content:"";position:absolute;top:7px;right:7px;bottom:7px;left:7px;border:1px solid rgba(176,141,87,.3);border-radius:15px;pointer-events:none}
 .rcard>*{position:relative}
 .field{position:relative;padding-top:10px}
 .field input,.field textarea{display:block;width:100%;border:0;border-bottom:1px solid rgba(176,141,87,.6);border-radius:0;background:transparent;font-size:max(16px,calc(17px*var(--k)));line-height:1.4;color:var(--plum);height:48px;padding:16px 0 6px;outline:none;transition:border-color .4s var(--sine);-webkit-appearance:none;appearance:none}
@@ -221,14 +230,14 @@ html:not(.js) .node::after,.tl.in .node::after{transform:scale(1)}
 fieldset{border:0;margin-top:10px;display:grid;gap:10px}
 .opt{position:relative;display:block;cursor:pointer}
 .opt input{position:absolute;opacity:0;width:1px;height:1px;left:50%;top:50%}
-.opt span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:6px 12px 6px calc(12px + .24em);border:1px solid var(--gold);border-radius:26px;color:var(--plum);transition:background-color .45s var(--sine),color .45s var(--sine),border-color .45s var(--sine)}
+.opt span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:6px 12px 6px calc(12px + var(--ls));border:1px solid var(--gold);border-radius:26px;color:var(--plum);transition:background-color .45s var(--sine),color .45s var(--sine),border-color .45s var(--sine)}
 .opt input:checked+span{background:var(--garnet);border-color:var(--garnet);color:var(--ivory)}
 .opt input:focus-visible+span{outline:2px solid var(--garnet);outline-offset:3px}
 .guests{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0 6px;transition:opacity .6s var(--sine)}
 .guests.off{opacity:.35}
 .g-l{font-size:calc(16px*var(--k));color:var(--gold-deep);line-height:1.3}
 .stepper{display:flex;align-items:center;gap:10px}
-.stp{width:48px;height:48px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--plum);font-size:22px;letter-spacing:0;line-height:1;cursor:pointer;transition:background-color .4s var(--sine);display:flex;align-items:center;justify-content:center;padding:0}
+.stp{width:48px;height:48px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--plum);font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:0;line-height:1;cursor:pointer;transition:background-color .4s var(--sine);display:flex;align-items:center;justify-content:center;padding:0}
 .stp:active{background:rgba(243,201,165,.35)}
 .stp:disabled{cursor:default}
 .stepper output{min-width:36px;text-align:center;font-size:28px;line-height:1}
@@ -240,7 +249,7 @@ fieldset{border:0;margin-top:10px;display:grid;gap:10px}
 .thanks.on{opacity:1}
 /* footer */
 .foot{position:relative;margin-top:48px}
-.band{position:relative;height:180px;background:linear-gradient(rgba(42,26,32,0),rgba(42,26,32,.05) 25%,rgba(42,26,32,.3) 50%,rgba(42,26,32,.72) 75%,var(--night))}
+.band{position:relative;height:200px;background:linear-gradient(rgba(243,201,165,0),rgba(243,201,165,.35) 22%,rgba(142,42,58,.28) 48%,rgba(58,36,41,.8) 75%,var(--night))}
 .star{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--gold-light);opacity:.2;animation:tw var(--p,6s) var(--sine) var(--d,0s) infinite}
 @keyframes tw{0%,100%{opacity:.2}50%{opacity:.8}}
 .fnight{background:var(--night);color:var(--ivory);text-align:center;padding:10px 22px calc(env(safe-area-inset-bottom) + 40px)}
@@ -257,16 +266,20 @@ html[lang=ru] .f-names,html[lang=en] .f-names{font-weight:400}
 .f-cap{font-size:calc(17px*var(--k));color:rgba(251,246,238,.85);line-height:1.6;max-width:30ch;margin:0 auto}
 html[lang=ru] .f-cap,html[lang=en] .f-cap{font-style:italic;font-weight:400}
 /* lang */
-.lang{position:fixed;top:calc(env(safe-area-inset-top) + 12px);right:12px;z-index:110;display:flex;background:rgba(251,246,238,.85);border:1px solid rgba(176,141,87,.45);border-radius:22px;overflow:hidden}
-.lang button{min-width:48px;min-height:44px;padding:0 8px;border:0;background:transparent;font-size:13px;letter-spacing:.06em;color:var(--gold-deep);cursor:pointer;transition:color .4s var(--sine)}
+.lang{position:absolute;top:calc(env(safe-area-inset-top) + 12px);right:12px;z-index:110;display:flex;background:rgba(251,246,238,.94);border:1px solid rgba(176,141,87,.45);border-radius:22px;overflow:hidden;box-shadow:0 6px 18px -10px rgba(59,42,47,.25);transition:background-color 1.4s var(--sine),border-color 1.4s var(--sine),box-shadow 1.4s var(--sine)}
+html.intro:not(.dawn) .lang{background:rgba(42,26,32,.45);border-color:rgba(217,191,140,.35);box-shadow:none}
+html.intro:not(.dawn) .lang button{color:var(--gold-light)}
+html.intro:not(.dawn) .lang button[aria-pressed=true]{color:var(--apricot)}
+.lang button{min-width:48px;min-height:44px;padding:0 8px;border:0;background:transparent;font-size:13px;letter-spacing:.06em;color:var(--gold-deep);cursor:pointer;transition:color 1s var(--sine)}
 .lang button[data-l=hy]{font-family:'Noto Serif Armenian',serif;font-weight:500}
 .lang button[data-l=ru],.lang button[data-l=en]{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14px}
 .lang button[aria-pressed=true]{color:var(--garnet)}
 .lang button:focus-visible{outline-offset:-4px}
-@media (max-height:700px){:root{--sign:128px}.hero{padding-top:calc(env(safe-area-inset-top) + 40px)}}
+@media (max-height:700px){:root{--sign:128px}.hero{padding-top:calc(env(safe-area-inset-top) + 66px)}}
+@media (max-width:340px){.date{gap:0 12px}}
 @media (min-width:700px){.ar .ln{stroke-width:.8}}
 @media (min-width:900px){:root{--sign:190px}#areva path,#fruit path,#inner{stroke-width:1.1}}
-@media (prefers-reduced-motion:reduce){.hint-ring::before,.pin,.pom24,.cue.go,.glows canvas,.star{animation:none!important}.cue{display:none}}
+@media (prefers-reduced-motion:reduce){.hint-ring::before,.pin,.pom24,.glows canvas,.star,.spin{animation:none!important}.cue{display:none}}
 </style>
 </head>
 <body>
@@ -310,10 +323,11 @@ html[lang=ru] .f-cap,html[lang=en] .f-cap{font-style:italic;font-weight:400}
  <p class="inv-line ha" id="hi" data-i18n="invite_line">Սիրով հրավիրում ենք Ձեզ կիսելու մեր ուրախությունը։</p>
  <div class="date ha" id="hd">
   <span class="day num">10<svg class="ring10" viewBox="0 0 70 52" aria-hidden="true"><path id="r10" d="M50,8 C40,2 16,3 8,14 C1,24 6,38 24,42 C42,46 60,38 61,24 C62,13 52,6 40,5"/><circle id="r10d" cx="40" cy="5" r="2"/></svg></span>
-  <i class="rule"></i><span class="lbl" data-i18n="month">ՀՈԿՏԵՄԲԵՐԻ</span><i class="rule"></i>
+  <i class="rule"></i><span class="lbl" data-i18n="month">ՀՈԿՏԵՄԲԵՐ</span><i class="rule"></i>
   <span class="num">2026</span>
  </div>
  <p class="wk ha" id="hw" data-i18n="weekday">Շաբաթ · ժամը 17:00</p>
+ <p class="wk ha" id="hp" data-i18n="hero_place">«Բաոբաբ» ռեստորան · Երևան</p>
  <div class="ararat" id="ararat" aria-hidden="true">
   <i class="cue" id="cue"></i>
   <svg class="ar" viewBox="0 0 390 120">
@@ -365,7 +379,7 @@ html[lang=ru] .f-cap,html[lang=en] .f-cap{font-style:italic;font-weight:400}
     <a class="pill" id="ya" target="_blank" rel="noopener" data-i18n="btn_yandex">Yandex Maps</a>
     <a class="pill" id="go" target="_blank" rel="noopener" data-i18n="btn_google">Google Maps</a>
    </div>
-   <a class="pill pri" id="cal" target="_blank" rel="noopener" data-i18n="btn_cal">Ավելացնել օրացույցում</a>
+   <a class="pill pri" id="cal" target="_blank" rel="noopener" data-i18n="btn_cal">Ավելացնել Google Օրացույցում</a>
   </div>
  </div>
 </section>
@@ -376,7 +390,7 @@ html[lang=ru] .f-cap,html[lang=en] .f-cap{font-style:italic;font-weight:400}
   <span class="lbl" data-reveal data-i18n="prog_label">ԾՐԱԳԻՐ</span>
   <h2 data-reveal style="--d:.14s" data-i18n="prog_heading">Երեկոյի ընթացքը</h2>
   <ol class="tl" data-in>
-   <li data-reveal style="--d:.1s"><span class="node" style="--nd:.3s"></span><div><div class="p-time num">17:00</div><div class="p-t" data-i18n="p1_t">Հյուրերի դիմավորում</div><div class="p-s" data-i18n="p1_s">Ողջույնի ըմպելիքներ, լուսանկարներ</div></div><svg class="sc" viewBox="0 0 40 40" aria-hidden="true"><circle class="sn" cx="32" cy="11" r="4" clip-path="url(#cp)"/><path d="M3,28 H37"/><path d="M4,28 L12,26 L16,22 L19,25 L24,16 C25,15 26,15 27,16 L36,27"/></svg></li>
+   <li data-reveal style="--d:.1s"><span class="node" style="--nd:.3s"></span><div><div class="p-time num">17:00</div><div class="p-t" data-i18n="p1_t">Հյուրերի դիմավորում</div><div class="p-s" data-i18n="p1_s">Ողջույնի ըմպելիքներ, լուսանկարահանում</div></div><svg class="sc" viewBox="0 0 40 40" aria-hidden="true"><circle class="sn" cx="32" cy="11" r="4" clip-path="url(#cp)"/><path d="M3,28 H37"/><path d="M4,28 L12,26 L16,22 L19,25 L24,16 C25,15 26,15 27,16 L36,27"/></svg></li>
    <li data-reveal style="--d:.28s"><span class="node" style="--nd:1s"></span><div><div class="p-time num">18:00</div><div class="p-t" data-i18n="p2_t">Նշանադրության արարողություն</div><div class="p-s" data-i18n="p2_s">Մատանիների փոխանակում</div></div><svg class="sc" viewBox="0 0 40 40" aria-hidden="true"><circle class="sn" cx="33" cy="27" r="4" clip-path="url(#cp)"/><path d="M3,28 H37"/><path d="M4,28 L12,26 L16,22 L19,25 L24,16 C25,15 26,15 27,16 L36,27"/></svg></li>
    <li data-reveal style="--d:.46s"><span class="node" style="--nd:1.7s"></span><div><div class="p-time num">19:00</div><div class="p-t" data-i18n="p3_t">Տոնական ընթրիք</div><div class="p-s" data-i18n="p3_s">Երաժշտություն և պար</div></div><svg class="sc" viewBox="0 0 40 40" aria-hidden="true"><path class="ap" d="M29,28 A4,3 0 0 1 37,28"/><path class="st" d="M11,4.5 L11.9,7.1 L14.5,8 L11.9,8.9 L11,11.5 L10.1,8.9 L7.5,8 L10.1,7.1Z"/><path d="M3,28 H37"/><path d="M4,28 L12,26 L16,22 L19,25 L24,16 C25,15 26,15 27,16 L36,27"/></svg></li>
   </ol>
@@ -397,11 +411,11 @@ html[lang=ru] .f-cap,html[lang=en] .f-cap{font-style:italic;font-weight:400}
     <label class="opt"><input type="radio" name="att" value="no"><span data-i18n="f_no">Ցավոք, չեմ կարող</span></label>
    </fieldset>
    <p class="help" id="eAtt" data-i18n="err_attend" aria-live="polite">Խնդրում ենք ընտրել պատասխանը։</p>
-   <div class="guests" id="gRow"><span class="g-l" id="gLbl" data-i18n="f_guests">Հյուրերի քանակ</span>
+   <div class="guests" id="gRow"><span class="g-l" id="gLbl" data-i18n="f_guests">Քանի՞ հոգի կլինեք (Ձեզ հետ միասին)</span>
     <div class="stepper"><button type="button" class="stp" id="gMinus" aria-label="Պակասեցնել" data-i18n-attr="aria-label:f_less">−</button><output class="num" id="gN" aria-live="polite" aria-labelledby="gLbl">1</output><button type="button" class="stp" id="gPlus" aria-label="Ավելացնել" data-i18n-attr="aria-label:f_more">+</button></div></div>
    <div class="field"><textarea id="f-msg" name="msg" rows="3" placeholder=" "></textarea><label for="f-msg" data-i18n="f_msg">Ձեր մաղթանքը (ըստ ցանկության)</label></div>
    <div class="send-wrap" id="sendWrap"><button type="submit" class="pill pri" data-i18n="btn_wa">Ուղարկել WhatsApp-ով</button></div>
-   <a class="pill" id="tg" data-i18n="btn_tg">Կիսվել Telegram-ով</a>
+   <a class="pill" id="tg" target="_blank" rel="noopener" data-i18n="btn_tg">Կիսվել Telegram-ով</a>
    <p class="thanks" id="thanks" aria-live="polite" data-i18n="thanks">Շնորհակալություն պատասխանի համար։</p>
   </form>
  </div>
@@ -441,10 +455,14 @@ name1:['Պավել','Павел','Pavel'],
 amp:['&','и','&'],
 name2:['Գայանե','Гаяне','Gayane'],
 invite_line:['Սիրով հրավիրում ենք Ձեզ կիսելու մեր ուրախությունը։','С любовью приглашаем вас разделить нашу радость.','With love, we invite you to share our joy.'],
-month:['ՀՈԿՏԵՄԲԵՐԻ','ОКТЯБРЯ','OCTOBER'],
+month:['ՀՈԿՏԵՄԲԵՐ','ОКТЯБРЯ','OCTOBER'],
 weekday:['Շաբաթ · ժամը 17:00','Суббота · 17:00','Saturday · 17:00'],
+hero_place:['«Բաոբաբ» ռեստորան · Երևան','Ресторан «Баобаб» · Ереван','Baobab Restaurant · Yerevan'],
 cd_label:['ՄԻՆՉԵՎ ՏՈՆԸ','ДО ПРАЗДНИКА','UNTIL THE DAY'],
+cd_today:['ԱՅՍՕՐ','СЕГОДНЯ','TODAY'],
+cd_after:['10 · 10 · 2026','10 · 10 · 2026','10 · 10 · 2026'],
 today:['Այսօր է մեր նշանադրության օրը։ Սիրով սպասում ենք Ձեզ։','Сегодня наш день! С любовью ждём вас.','Today is the day! We can\'t wait to see you.'],
+after:['Շնորհակալություն, որ այդ կարևոր օրը մեզ հետ էիք։','Спасибо, что были с нами в этот важный день!','Thank you for celebrating with us!'],
 inv_label:['ՀՐԱՎԵՐ','ПРИГЛАШЕНИЕ','INVITATION'],
 inv_heading:['Սիրելի հարազատներ և ընկերներ','Дорогие родные и друзья','Dear family and friends'],
 inv_text:['Մեծ ուրախությամբ հրավիրում ենք Ձեզ մեր նշանադրությանը։ Այս երեկոն մեզ համար առանձնահատուկ է, և ուզում ենք այն անցկացնել մեր ամենամտերիմ մարդկանց հետ։ Ձեր ներկայությունն այն ավելի ջերմ կդարձնի։','С большой радостью приглашаем вас на нашу помолвку. Этот вечер особенный для нас, и мы хотим провести его с самыми близкими людьми. Ваше присутствие сделает его ещё теплее.','With great joy we invite you to our engagement. This evening is special to us, and we want to spend it with the people closest to our hearts. Your presence will make it even warmer.'],
@@ -456,11 +474,11 @@ map_title:['«Բաոբաբ» ռեստորանը քարտեզի վրա','Рест
 map_veil:['Հպեք քարտեզին','Нажмите на карту','Tap the map'],
 btn_yandex:['Yandex Maps','Яндекс Карты','Yandex Maps'],
 btn_google:['Google Maps','Google Карты','Google Maps'],
-btn_cal:['Ավելացնել օրացույցում','Добавить в календарь','Add to Google Calendar'],
+btn_cal:['Ավելացնել Google Օրացույցում','Добавить в Google Календарь','Add to Google Calendar'],
 prog_label:['ԾՐԱԳԻՐ','ПРОГРАММА','PROGRAMME'],
 prog_heading:['Երեկոյի ընթացքը','Ход вечера','The evening'],
 p1_t:['Հյուրերի դիմավորում','Встреча гостей','Guests arrive'],
-p1_s:['Ողջույնի ըմպելիքներ, լուսանկարներ','Приветственные напитки, фотографии','Welcome drinks, photos'],
+p1_s:['Ողջույնի ըմպելիքներ, լուսանկարահանում','Приветственные напитки, фотосессия','Welcome drinks, photos'],
 p2_t:['Նշանադրության արարողություն','Церемония помолвки','Engagement ceremony'],
 p2_s:['Մատանիների փոխանակում','Обмен кольцами','Ring exchange'],
 p3_t:['Տոնական ընթրիք','Праздничный ужин','Festive dinner'],
@@ -472,7 +490,7 @@ f_name:['Անուն, ազգանուն','Имя и фамилия','Your name'],
 f_attend:['Ձեր պատասխանը','Ваш ответ','Your reply'],
 f_yes:['Սիրով կգամ','С радостью приду','Joyfully accept'],
 f_no:['Ցավոք, չեմ կարող','К сожалению, не смогу','Regretfully decline'],
-f_guests:['Հյուրերի քանակ','Количество гостей','Number of guests'],
+f_guests:['Քանի՞ հոգի կլինեք (Ձեզ հետ միասին)','Сколько всего человек (вместе с вами)','How many in your party (including you)'],
 f_less:['Պակասեցնել','Меньше','Fewer'],
 f_more:['Ավելացնել','Больше','More'],
 f_msg:['Ձեր մաղթանքը (ըստ ցանկության)','Ваше пожелание (необязательно)','Your wishes (optional)'],
@@ -482,14 +500,14 @@ btn_wa:['Ուղարկել WhatsApp-ով','Отправить в WhatsApp','Send 
 btn_tg:['Կիսվել Telegram-ով','Поделиться в Telegram','Share on Telegram'],
 thanks:['Շնորհակալություն պատասխանի համար։','Спасибо за ответ!','Thank you for your reply!'],
 foot_place:['ք. Երևան · «Բաոբաբ»','Ереван · «Баобаб»','Yerevan · Baobab'],
-foot_caption:['Ինչպես Մասիսն ու Սիսը՝ միշտ կողք կողքի։','Как Масис и Сис — всегда рядом.','Like Masis and Sis — always side by side.'],
+foot_caption:['Ինչպես Մասիսն ու Սիսը՝ միշտ կողք կողքի։','Как Масис и Сис — всегда рядом.','Like Masis and Sis, the twin peaks of Ararat — always side by side.'],
 lang_aria:['Լեզու','Язык','Language'],
 cal_title:['Պավել & Գայանե — նշանադրություն','Павел и Гаяне — помолвка','Pavel & Gayane — engagement'],
 cal_details:['17:00 Հյուրերի դիմավորում · 18:00 Նշանադրության արարողություն · 19:00 Տոնական ընթրիք','17:00 Встреча гостей · 18:00 Церемония помолвки · 19:00 Праздничный ужин','17:00 Guests arrive · 18:00 Engagement ceremony · 19:00 Festive dinner'],
 msg_when:['Շաբաթ, հոկտեմբերի 10, 17:00','Суббота, 10 октября, 17:00','Saturday, 10 October, 17:00'],
 msg_name:['Անուն','Имя','Name'],
 msg_answer:['Պատասխան','Ответ','Reply'],
-msg_guests:['Հյուրերի քանակ','Гостей','Guests'],
+msg_guests:['Քանի հոգի','Всего человек','Party size'],
 msg_note:['Մաղթանք','Пожелание','Wishes'],
 tg_invite:['Պավել & Գայանե — նշանադրություն, շաբաթ, հոկտեմբերի 10, 17:00, «Բաոբաբ» ռեստորան, Երևան','Павел и Гаяне — помолвка, суббота, 10 октября, 17:00, ресторан «Баобаб», Ереван','Pavel & Gayane — engagement, Saturday, 10 October, 17:00, Baobab Restaurant, Yerevan']
 };
@@ -576,7 +594,15 @@ $$('.lang button').forEach(b => { ['pointerdown','pointerup','touchstart'].forEa
   b.addEventListener('click', e => { e.stopPropagation(); setLang(b.dataset.l); }); });
 
 /* ---------- countdown ---------- */
-const cdWrap = $('#cd');
+const cdWrap = $('#cd'), cdLbl = $('[data-i18n=cd_label]'), cdP = $('.cd-today p'), AFTER = Date.UTC(2026,9,10,20,0,0); // midnight Yerevan
+let cdSt = -1;
+function cdState(st, anim) {   // 0 countdown, 1 today, 2 after the day
+  if (st === cdSt) return; const first = cdSt < 0; cdSt = st; cdWrap.classList.toggle('is-today', st > 0);
+  const set = () => { cdLbl.dataset.i18n = ['cd_label','cd_today','cd_after'][st]; cdP.dataset.i18n = st === 2 ? 'after' : 'today';
+    cdLbl.textContent = T[lang][cdLbl.dataset.i18n]; cdP.textContent = T[lang][cdP.dataset.i18n]; cdLbl.style.opacity = ''; };
+  if (first || !anim) return set();
+  cdLbl.style.transition = 'opacity .45s var(--sine)'; cdLbl.style.opacity = 0; setTimeout(set, 450);
+}
 const cells = $$('.cell').map(c => ({vs: Array.from(c.querySelectorAll('.val span')), us: Array.from(c.querySelectorAll('.unit span')), vi:0, ui:0, v:null, u:null}));
 function swapTxt(c, list, key, idx, txt, anim, move) {
   if (c[key] === txt) return;
@@ -589,8 +615,8 @@ function swapTxt(c, list, key, idx, txt, anim, move) {
 }
 function renderCd(anim) {
   const d = TARGET - now();
-  if (d <= 0) { cdWrap.classList.add('is-today'); return; }
-  cdWrap.classList.remove('is-today');
+  cdState(d > 0 ? 0 : now() < AFTER ? 1 : 2, anim);
+  if (d <= 0) return;
   const s = Math.floor(d / 1000), p = [Math.floor(s/86400), Math.floor(s%86400/3600), Math.floor(s%3600/60), s%60];
   p.forEach((n,i) => { const c = cells[i];
     swapTxt(c, c.vs, 'v', 'vi', i ? String(n).padStart(2,'0') : String(n), anim, true);
@@ -680,7 +706,7 @@ function stepParts(t, dt) {
       if (p.m === 1) { const w2 = openT < 0 ? 0 : seg(t - openT, 1.4, 2.6); vx = p.vx + (ax - p.vx)*w2; vy = p.vy + (ay - p.vy)*w2; a *= Eo(c01(t/2)); if (w2 >= 1) p.m = 0; }
       else if (p.m === 2) { const dr = Math.pow(.955, dt*60), age = t - p.b, w2 = seg(age, 1.4, 2.6);
         p.vx *= dr; p.vy = p.vy*dr + 6*dt; vx = p.vx + (ax - p.vx)*w2; vy = p.vy + (ay - p.vy)*w2;
-        a = .95*(1 - w2) + a*w2;
+        a = .95*(1 - w2) + a*w2; a *= Eo(c01(age/.25));
         if (!p.keep) { a *= 1 - seg(age, p.fs, p.fs + p.fd); if (age > p.fs + p.fd) { parts.splice(i,1); continue; } }
         else if (w2 >= 1) p.m = 0; }
       p.x += vx*dt; p.y += vy*dt; p.rot += p.vr*dt;
@@ -709,7 +735,7 @@ const halfL = el('halfL'), halfR = el('halfR'), crown = el('crown'), seam = el('
   ripple = el('ripple'), night = el('night'), openB = el('open'), ararat = el('ararat'), ridge = el('ridge'), mist = el('mist'), snow = el('snow'),
   sun = el('sun'), sunB = el('sunB'), r10 = el('r10'), r10d = el('r10d'), srot = el('srot'), cue = el('cue'), rules = $$('.rule');
 const armP = Array.from(areva.children);
-const HA = [[el('hl'),2.9,1],[el('n1'),3.05,1.2],[el('na'),3.25,1.2],[el('n2'),3.45,1.2],[el('hi'),3.7,1.1],[el('hd'),3.9,1.1],[el('hw'),4.05,1]];
+const HA = [[el('hl'),2.9,1],[el('n1'),3.05,1.2],[el('na'),3.25,1.2],[el('n2'),3.45,1.2],[el('hi'),3.7,1.1],[el('hd'),3.9,1.1],[el('hw'),4.05,1],[el('hp'),4.15,1]];
 function prep(p) { const L = p.getTotalLength(); p._L = L; p.style.strokeDasharray = L + ' ' + L; p.style.strokeDashoffset = L + .5; p.style.opacity = 0; }
 function dr(p, v, o) { p.style.strokeDashoffset = ((p._L + .5)*(1 - v)).toFixed(2); p.style.opacity = v > 0 ? (o === undefined ? 1 : o) : 0; }
 const t0 = performance.now();
@@ -717,6 +743,9 @@ let fontsAt = 1e9, cap = null, tapX = 0, tapY = 0, R = 1, stage = 0, introDone =
 Promise.race([document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 1500))])
   .then(() => { fontsAt = (performance.now() - t0) / 1000; });
 if (INTRO && !RM) { [halfL, halfR, crown, seam, inner, ridge, snow, r10].concat(armP).forEach(prep); r10d.style.opacity = 0; }
+const signBox = el('signBox');
+function signTarget() { const S = signBox.offsetHeight; return Math.max(70, (innerHeight - S - 108)/2 - innerHeight*.03) - signBox.offsetTop; }
+function setSignOff(y) { signBox.style.transform = y ? 'translate3d(0,' + y.toFixed(2) + 'px,0)' : ''; }
 function preVals(t) {
   const tn = Math.max(fontsAt, 1.6);
   if (RM) return {hv:1, cv:1, halo:.4, nm: fontsAt < 1e9 ? 1 : 0, hint:1, amp:0, tn};
@@ -728,6 +757,8 @@ function prePaint(t) {
   if (!RM) { dr(halfL, v.hv); dr(halfR, v.hv); dr(crown, v.cv); }
   fruit.setAttribute('transform', 'translate(0,6) scale(' + (1 + .025*b*v.amp).toFixed(4) + ')');
   const h = v.halo*(1 - v.amp) + (.35 + .3*b)*v.amp; halo.style.opacity = h.toFixed(3);
+  v.g = (RM ? 1 : seg(t, 1.2, 2.6))*(.16 + .12*b); glow.style.opacity = v.g.toFixed(3);
+  v.off = signTarget(); setSignOff(v.off);
   icN.style.opacity = v.nm.toFixed(3); icN.style.transform = 'translate3d(0,' + (10*(1 - v.nm)).toFixed(2) + 'px,0)';
   const hb = RM ? 0 : seg(t, v.tn + 1.3, v.tn + 2.3), hp = .5 - .5*Math.cos(TAU*Math.max(0, t - v.tn - 1.3)/3.4);
   icH.style.opacity = (v.hint*(1 - .4*hp*hb)).toFixed(3); icH.style.transform = 'translate3d(0,' + (10*(1 - v.hint)).toFixed(2) + 'px,0)';
@@ -745,16 +776,17 @@ function onTap(e) {
   cap = prePaint(t); cap.ic = parseFloat(getComputedStyle(ic).opacity) || 1;
   ripple.style.transform = 'translate3d(' + (tapX - 120) + 'px,' + (tapY - 120) + 'px,0) scale(.05)';
   cap.cx = sb.left + sb.width/2; cap.cy = sb.top + sb.height/2 + sb.height*8/180;
+  setTimeout(() => { if (introActive) { night.style.display = openB.style.display = 'none'; setSignOff(0); unlock(); } }, 6000);   // safety net if rAF stalls
 }
 openB.addEventListener('pointerup', onTap); openB.addEventListener('click', onTap);
 openB.addEventListener('touchmove', e => e.preventDefault(), {passive:false});
 function setHA(T) { HA.forEach(([e, a, d], i) => { const v = segO(T, a, a + d);
   e.style.opacity = v.toFixed(3); e.style.transform = 'translate3d(0,' + (14*(1 - v)).toFixed(2) + 'px,0)' + (i === 2 ? ' scale(' + (.9 + .1*v).toFixed(4) + ')' : ''); }); }
-function unlock() { scrollTo(0,0); H.classList.remove('locked','intro'); introActive = false; requestAnimationFrame(() => scrollTo(0,0)); }
+function unlock() { if (!introActive) return; scrollTo(0,0); H.classList.remove('locked','intro'); introActive = false; requestAnimationFrame(() => scrollTo(0,0)); }
 function finishLiving() { srot.classList.add('spin'); sunB.classList.add('breath'); cue.classList.add('go'); }
 function openFrame(T, t) {
   if (RM) {
-    const e = seg(T, 0, .8);
+    const e = seg(T, 0, .8); H.classList.add('dawn'); setSignOff(cap.off*(1 - e)); glow.style.opacity = (cap.g*(1 - e)).toFixed(3);
     nbg.style.opacity = 1 - e; fruit.style.opacity = 1 - e; ic.style.opacity = 1 - e; hring.style.opacity = 1 - e; halo.style.opacity = cap.h*(1 - e);
     armP.concat([inner, dots, mono, el('beads'), r10, r10d, ararat, mist]).forEach(x => x.style.opacity = e);
     HA.forEach(([x]) => { x.style.opacity = e; x.style.transform = 'none'; }); rules.forEach(r => r.style.transform = 'scaleY(1)');
@@ -772,7 +804,8 @@ function openFrame(T, t) {
   halo.style.opacity = (cap.h*(1 - seg(T, 0, 1.2))).toFixed(3);
   dr(halfL, hv, fo); dr(halfR, hv, fo); dr(seam, seg(T, .15, .75), fo);
   const co = seg(T, .5, 1.3); dr(crown, cvv, 1 - co); crownG.setAttribute('transform', 'translate(0,' + (-8*co).toFixed(2) + ')');
-  glow.style.opacity = (.9*seg(T, .15, .9)*(1 - seg(T, 1.4, 2.4))).toFixed(3);
+  glow.style.opacity = ((cap.g + (.9 - cap.g)*seg(T, .15, .9))*(1 - seg(T, 1.4, 2.4))).toFixed(3);
+  setSignOff(cap.off*(1 - seg(T, 1.5, 3))); if (T >= 1.8) H.classList.add('dawn');
   const o = seg(T, .5, 1.8);
   gL.setAttribute('transform', 'translate(' + (-22*o).toFixed(2) + ',0) rotate(' + (-16*o).toFixed(2) + ',0,74)');
   gR.setAttribute('transform', 'translate(' + (22*o).toFixed(2) + ',0) rotate(' + (16*o).toFixed(2) + ',0,74)');
@@ -823,9 +856,9 @@ const hashT = !INTRO && location.hash && location.hash !== '#open' ? document.ge
 function goTop() { if (hashT) scrollTo(0, hashT.getBoundingClientRect().top + scrollY - 64); else scrollTo(0, 0); }
 if (!INTRO) finishLiving();
 document.addEventListener('DOMContentLoaded', goTop);
-addEventListener('load', () => { goTop(); onScroll(); });
+addEventListener('load', () => { if (!(INTRO && !introActive)) goTop(); onScroll(); });   // unlock() already scrolled to top
 addEventListener('pageshow', e => { let sent = false; try { sent = !!sessionStorage.getItem('nur_sent'); } catch (x) {}
-  if (e.persisted && sent) { $('#thanks').classList.add('on'); return; } if (!e.persisted || !sent) goTop(); });
+  if (e.persisted) { if (sent) $('#thanks').classList.add('on'); return; } goTop(); });
 goTop(); startLoop();
 
 /* ---------- self-check (console only) ---------- */
